@@ -1,13 +1,14 @@
-const CACHE_NAME = 'steady-inhale-v1';
+const CACHE_NAME = 'steady-inhale-v2';
+const BASE = '/steady-inhale/';
 
 const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/assets/index-CXo3b2TL.js',
-  '/assets/index-doGaRPUZ.css',
+  BASE,
+  BASE + 'index.html',
+  BASE + 'manifest.json',
+  BASE + 'icon-192.png',
+  BASE + 'icon-512.png',
+  BASE + 'assets/index-CXo3b2TL.js',
+  BASE + 'assets/index-doGaRPUZ.css',
 ];
 
 self.addEventListener('install', (event) => {
@@ -38,7 +39,7 @@ self.addEventListener('fetch', (event) => {
         return response;
       }).catch(() => {
         if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
+          return caches.match(BASE + 'index.html');
         }
       });
     })
